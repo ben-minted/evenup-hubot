@@ -16,6 +16,8 @@ LOG_FILE="<%= scope.lookupvar('hubot::log_file_real') %>"
 USER=hubot
 DISPLAY_NAME="<%= scope.lookupvar('hubot::display_name') %>"
 
+HUBOT_OPTS="--name $DISPLAY_NAME --adapter $ADAPTER"
+
 HUBOT_BIN="$ROOT_DIR/bin/hubot"
 PIDFILE=/var/run/hubot.pid
 
