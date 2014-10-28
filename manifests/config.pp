@@ -126,7 +126,7 @@ class hubot::config {
     mode    => '0440',
     content => template('hubot/hubot.env.erb'),
     notify  => Class['hubot::service'],
-    require => Exec['Hubot init'],
+    require => Vcsrepo["${::hubot::root_dir}/${::hubot::bot_name}"],
   }
 
 }
