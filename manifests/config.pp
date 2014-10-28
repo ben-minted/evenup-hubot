@@ -87,16 +87,6 @@ class hubot::config {
       logoutput   => 'on_failure',
     }
 
-    file { "${::hubot::root_dir}/${::hubot::bot_name}/hubot.env":
-      ensure  => 'present',
-      owner   => 'hubot',
-      group   => 'hubot',
-      mode    => '0440',
-      content => template('hubot/hubot.env.erb'),
-      notify  => Class['hubot::service'],
-      require => Exec['Hubot init'],
-    }
-
     file { "${::hubot::root_dir}/${::hubot::bot_name}/hubot-scripts.json":
       ensure  => 'present',
       owner   => 'hubot',
@@ -127,6 +117,16 @@ class hubot::config {
       require => Exec['Hubot init'],
     }
 
+  }
+
+  file { "${::hubot::root_dir}/${::hubot::bot_name}/hubot.env":
+    ensure  => 'present',
+    owner   => 'hubot',
+    group   => 'hubot',
+    mode    => '0440',
+    content => template('hubot/hubot.env.erb'),
+    notify  => Class['hubot::service'],
+    require => Exec['Hubot init'],
   }
 
 }
