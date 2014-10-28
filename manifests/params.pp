@@ -32,7 +32,7 @@ class hubot::params {
   $service_enable       = true
 
   case $::operatingsystem {
-    'Ubuntu': {
+    Ubuntu: {
       $hubot_init         = "hubot.init.${::operatingsystem}.erb"
       $nodejs_manage_repo = true
     }
