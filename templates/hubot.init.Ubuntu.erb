@@ -34,13 +34,13 @@ set -e
 
 start_bot ()
 {
-  start-stop-daemon --start --quiet --chuid $USER --chdir $ROOT_DIR --pidfile $PIDFILE --make-pidfile --background --name hubot --startas $HUBOT_BIN -- $HUBOT_OPTS
+  /sbin/start-stop-daemon --start --chuid $USER --chdir $ROOT_DIR --pidfile $PIDFILE --make-pidfile --background --name hubot --startas $HUBOT_BIN -- $HUBOT_OPTS
   log_end_msg $?
 }
 
 stop_bot ()
 {
-  start-stop-daemon --stop --quiet --pidfile $PIDFILE
+  /sbin/start-stop-daemon --stop --quiet --pidfile $PIDFILE
   STATUS=$?
   if [ $STATUS == 0 ]; then
     rm -r $PIDFILE
